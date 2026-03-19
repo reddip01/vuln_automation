@@ -1,0 +1,74 @@
+2026-03-18 20:08:56,149 - INFO - Iniciando Ciclo Trimestral - Generación de Snapshot
+2026-03-18 20:08:56,149 - INFO - Paso 1: Cargando inventario desde data/inventory/activos.csv
+2026-03-18 20:08:56,203 - INFO - Paso 2 y 3: Actualizando 1 activos en Nessus ID: 6
+2026-03-18 20:11:12,415 - INFO - Iniciando Ciclo Trimestral - Generación de Snapshot
+2026-03-18 20:11:12,416 - INFO - Paso 1: Cargando inventario desde data/inventory/activos.csv
+2026-03-18 20:11:12,420 - INFO - Paso 2 y 3: Actualizando 1 activos en Nessus ID: 6
+2026-03-18 20:11:12,461 - ERROR - Requests Library Error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-18 20:11:13,489 - ERROR - Requests Library Error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-18 20:11:14,526 - ERROR - Requests Library Error: ('Connection broken: IncompleteRead(0 bytes read, 32 more expected)', IncompleteRead(0 bytes read, 32 more expected))
+2026-03-18 20:11:15,556 - ERROR - Requests Library Error: ('Connection broken: IncompleteRead(0 bytes read, 32 more expected)', IncompleteRead(0 bytes read, 32 more expected))
+2026-03-18 20:11:16,586 - ERROR - Requests Library Error: ('Connection broken: IncompleteRead(0 bytes read, 32 more expected)', IncompleteRead(0 bytes read, 32 more expected))
+2026-03-18 20:11:17,620 - ERROR - Requests Library Error: ('Connection broken: IncompleteRead(0 bytes read, 32 more expected)', IncompleteRead(0 bytes read, 32 more expected))
+2026-03-18 20:14:13,022 - INFO - Iniciando Ciclo Trimestral - Generación de Snapshot
+2026-03-18 20:14:13,023 - INFO - Paso 1: Cargando inventario desde data/inventory/activos.csv
+2026-03-18 20:14:13,027 - INFO - Paso 2 y 3: Actualizando 1 activos en Nessus ID: 6
+2026-03-18 20:14:13,061 - ERROR - Requests Library Error: ('Connection broken: IncompleteRead(0 bytes read, 32 more expected)', IncompleteRead(0 bytes read, 32 more expected))
+2026-03-18 20:14:14,098 - ERROR - Requests Library Error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-18 20:14:15,132 - ERROR - Requests Library Error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-18 20:14:16,178 - ERROR - Requests Library Error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-18 20:18:24,537 - INFO - Iniciando Ciclo Trimestral - Generación de Snapshot
+2026-03-18 20:18:24,537 - INFO - Paso 1: Cargando inventario desde data/inventory/activos.csv
+2026-03-18 20:18:24,541 - INFO - Paso 2 y 3: Actualizando 1 activos en Nessus ID: 6
+2026-03-18 20:18:24,600 - ERROR - Requests Library Error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-18 20:18:27,080 - ERROR - Requests Library Error: ('Connection broken: IncompleteRead(0 bytes read, 32 more expected)', IncompleteRead(0 bytes read, 32 more expected))
+2026-03-18 20:18:28,116 - ERROR - Requests Library Error: ('Connection broken: IncompleteRead(0 bytes read, 32 more expected)', IncompleteRead(0 bytes read, 32 more expected))
+2026-03-18 20:18:29,211 - ERROR - Requests Library Error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-18 20:18:30,246 - ERROR - Requests Library Error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-18 20:18:31,281 - ERROR - Requests Library Error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-18 20:20:49,929 - INFO - Iniciando Ciclo Trimestral - Generación de Snapshot
+2026-03-18 20:20:49,929 - INFO - Paso 1: Cargando inventario desde data/inventory/activos.csv
+2026-03-18 20:20:49,933 - INFO - Paso 2 y 3: Actualizando 1 activos en Nessus ID: 6
+2026-03-18 20:20:49,972 - ERROR - Requests Library Error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-18 20:20:51,005 - ERROR - Requests Library Error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-18 20:20:52,040 - ERROR - Requests Library Error: ('Connection broken: IncompleteRead(0 bytes read, 32 more expected)', IncompleteRead(0 bytes read, 32 more expected))
+2026-03-18 20:20:53,072 - ERROR - Requests Library Error: ('Connection broken: IncompleteRead(0 bytes read, 32 more expected)', IncompleteRead(0 bytes read, 32 more expected))
+2026-03-18 20:20:54,163 - ERROR - Requests Library Error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-18 20:20:55,222 - ERROR - Requests Library Error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-18 20:24:40,758 - INFO - Iniciando Ciclo Trimestral - Generación de Snapshot
+2026-03-18 20:24:40,759 - INFO - Paso 1: Cargando inventario desde data/inventory/activos.csv
+2026-03-18 20:24:40,762 - INFO - Paso 2 y 3: Actualizando 1 activos en Nessus ID: 6
+2026-03-18 20:25:54,814 - INFO - Iniciando Ciclo Trimestral - Generación de Snapshot
+2026-03-18 20:25:54,814 - INFO - Paso 1: Cargando inventario desde data/inventory/activos.csv
+2026-03-18 20:25:54,818 - INFO - Paso 2 y 3: Actualizando 1 activos en Nessus ID: 6
+2026-03-18 20:25:54,896 - ERROR - Requests Library Error: ('Connection broken: IncompleteRead(0 bytes read, 32 more expected)', IncompleteRead(0 bytes read, 32 more expected))
+2026-03-18 20:25:55,922 - ERROR - Requests Library Error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-18 20:25:56,949 - ERROR - Requests Library Error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-18 20:25:57,984 - ERROR - Requests Library Error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-18 20:25:59,014 - ERROR - Requests Library Error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-18 20:26:00,045 - ERROR - Requests Library Error: ('Connection broken: IncompleteRead(0 bytes read, 32 more expected)', IncompleteRead(0 bytes read, 32 more expected))
+2026-03-18 20:27:16,196 - INFO - Iniciando Ciclo Trimestral - Generación de Snapshot
+2026-03-18 20:27:16,196 - INFO - Paso 1: Cargando inventario desde data/inventory/activos.csv
+2026-03-18 20:27:16,199 - INFO - Paso 2 y 3: Actualizando 1 activos en Nessus ID: 6
+2026-03-18 20:27:16,237 - ERROR - Requests Library Error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-18 20:27:17,262 - ERROR - Requests Library Error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-18 20:27:18,296 - ERROR - Requests Library Error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-18 20:27:19,324 - ERROR - Requests Library Error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-18 20:27:20,351 - ERROR - Requests Library Error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-18 20:27:21,382 - ERROR - Requests Library Error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-18 20:29:48,368 - INFO - Iniciando Ciclo Trimestral - Generación de Snapshot
+2026-03-18 20:29:48,368 - INFO - Paso 1: Cargando inventario desde data/inventory/activos.csv
+2026-03-18 20:29:48,373 - INFO - Paso 2 y 3: Actualizando 1 activos en Nessus ID: 6
+2026-03-18 20:40:28,306 - INFO - Iniciando Ciclo Trimestral - Generación de Snapshot
+2026-03-18 20:40:28,306 - INFO - Paso 1: Cargando inventario desde data/inventory/activos.csv
+2026-03-18 20:40:28,311 - INFO - Paso 2 y 3: Actualizando 1 activos en Nessus ID: 6
+2026-03-18 20:41:20,298 - INFO - Iniciando Ciclo Trimestral - Generación de Snapshot
+2026-03-18 20:41:20,298 - INFO - Paso 1: Cargando inventario desde data/inventory/activos.csv
+2026-03-18 20:41:20,303 - INFO - Paso 2 y 3: Actualizando 1 activos en Nessus ID: 6
+2026-03-18 20:41:20,331 - ERROR - Requests Library Error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-18 20:41:21,365 - ERROR - Requests Library Error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-18 20:41:22,406 - ERROR - Requests Library Error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-18 20:41:23,441 - ERROR - Requests Library Error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-18 20:41:24,472 - ERROR - Requests Library Error: ('Connection broken: IncompleteRead(0 bytes read, 32 more expected)', IncompleteRead(0 bytes read, 32 more expected))
+2026-03-18 20:41:25,535 - ERROR - Requests Library Error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-03-18 20:41:26,538 - INFO - Paso 4-7: Extrayendo resultados y aplicando Revalorización (KNIME Logic)

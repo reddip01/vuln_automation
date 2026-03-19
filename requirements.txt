@@ -3,3 +3,4 @@ pandas
 python-dotenv
 urllib3
 streamlit
+requests

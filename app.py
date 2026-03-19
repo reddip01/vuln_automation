@@ -1,91 +1,87 @@
 import streamlit as st
-import os
 import pandas as pd
-from datetime import datetime
-from dotenv import load_dotenv
+import os
 from core.orchestrator import ScanOrchestrator
-from core.notifier import Notifier
 
-# Configuración visual de la página
-st.set_page_config(page_title="Gestión de Vulnerabilidades - Engineer Dashboard", layout="wide")
-load_dotenv()
+# Configuración de página
+st.set_page_config(page_title="Vulnerability Manager Pro", layout="wide")
 
-st.title("🛡️ Sistema de Gestión de Vulnerabilidades")
-st.markdown("---")
+# --- BARRA LATERAL: SELECTOR DE REGULATORIO ---
+st.sidebar.title("🎯 Alcance de Control")
+regulatorio = st.sidebar.selectbox(
+    "Seleccione el Regulatorio:",
+    ["NET", "SERV"],
+    help="NET: Networking | SERV: Servidores"
+)
 
-# Inicializar clases
-orchestrator = ScanOrchestrator()
-notifier = Notifier()
+# Inicializar Orquestador con el scope seleccionado
+orchestrator = ScanOrchestrator(regulatorio)
 
-# --- Barra Lateral: Estado de Configuración ---
-st.sidebar.header("⚙️ Estado de Configuración")
-config_files = {
-    "Inventario": os.getenv('PATH_INVENTORY'),
-    "Matriz KNIME": os.getenv('PATH_MATRIX'),
-    "Asumidos": os.getenv('PATH_ASSUMED'),
-    "Snapshot (Foto)": os.getenv('PATH_SNAPSHOT')
-}
+st.title(f"🛡️ Gestión de Vulnerabilidades: {regulatorio}")
+st.markdown(f"**Escaneo Asociado (Nessus ID):** `{orchestrator.scan_id}`")
+st.divider()
 
-for name, path in config_files.items():
-    if os.path.exists(path):
-        st.sidebar.success(f"✅ {name} listo")
-    else:
-        st.sidebar.warning(f"⚠️ {name} no encontrado")
-
-# --- Cuerpo Principal: Pestañas de Trabajo ---
-tab1, tab2, tab3 = st.tabs(["🚀 Inicio de Ciclo", "📊 Seguimiento Semanal", "📜 Auditoría"])
+# --- CUERPO PRINCIPAL: FASES ---
+tab1, tab2 = st.tabs(["🚀 Inicio de Ciclo (Snapshot)", "📊 Seguimiento Semanal"])
 
 with tab1:
-    st.header("Inicio de Ciclo Trimestral")
-    st.info("Esta acción actualizará los targets en Nessus, ejecutará el escaneo y creará la **Foto Inicial (Snapshot)** con la revalorización aplicada.")
+    st.info(f"Ejecute las fases en orden para el regulatorio **{regulatorio}**.")
     
-    if st.button("Lanzar Snapshot Inicial"):
-        with st.spinner("Ejecutando proceso completo (Pasos 1-8)..."):
-            try:
-                df_snap = orchestrator.ejecutar_pasos_iniciales()
-                st.success("✅ Snapshot Inicial generado y guardado exitosamente.")
-                st.dataframe(df_snap.head(20))
-                
-                # Enviar notificación opcional
-                notifier.enviar_reporte(
-                    "INICIO DE CICLO: Snapshot Generado",
-                    "Se ha generado la foto inicial del trimestre. Se adjunta la sábana priorizada.",
-                    adjuntos=[os.getenv('PATH_SNAPSHOT')]
-                )
-            except Exception as e:
-                st.error(f"Error en la ejecución: {e}")
+    col1, col2, col3 = st.columns(3)
+
+    # --- FASE 1: PING TEST ---
+    with col1:
+        st.subheader("Fase 1: Alcance")
+        if st.button(f"🔍 Validar IPs {regulatorio}", use_container_width=True):
+            with st.spinner("Haciendo Ping..."):
+                df_reach, total = orchestrator.ejecutar_fase_1()
+                st.success(f"Activos Alcanzados: {total}")
+                st.dataframe(df_reach, height=300)
+                st.caption(f"Evidencia guardada en: `{orchestrator.reach_path}`")
+
+    # --- FASE 2: LANZAR NESSUS ---
+    with col2:
+        st.subheader("Fase 2: Ejecución")
+        st.write("Inyecta IPs vivas y dispara el escaneo.")
+        if st.button("🚀 Lanzar en Nessus", use_container_width=True):
+            if os.path.exists(orchestrator.reach_path):
+                if orchestrator.ejecutar_fase_2():
+                    st.warning("⚠️ Escaneo iniciado. Espere a que termine en la consola de Nessus antes de la Fase 3.")
+                else:
+                    st.error("No hay IPs alcanzables en el log de la Fase 1.")
+            else:
+                st.error("Primero debe ejecutar la Fase 1.")
+
+    # --- FASE 3: SNAPSHOT ---
+    with col3:
+        st.subheader("Fase 3: Snapshot")
+        st.write("Descarga resultados y aplica Lógica KNIME.")
+        if st.button("💾 Generar Snapshot", use_container_width=True):
+            with st.spinner("Procesando datos..."):
+                try:
+                    df_snap = orchestrator.ejecutar_fase_3()
+                    st.success("✅ Snapshot generado exitosamente.")
+                    st.dataframe(df_snap.head(10))
+                except Exception as e:
+                    st.error(f"Error: Asegúrese de que el escaneo en Nessus haya terminado. {e}")
 
 with tab2:
-    st.header("Verificación de Cierre (Semanal)")
-    st.write("Compara el escaneo actual contra el Snapshot y descuenta los activos en el archivo de Asumidos.")
+    st.header("Cruce de Datos Semanal")
+    st.write(f"Esta sección compara el estado actual de **{regulatorio}** contra su Snapshot trimestral.")
     
-    if st.button("Ejecutar Comparativa de Estados"):
-        with st.spinner("Analizando brechas y cierres..."):
-            try:
-                df_final = orchestrator.ejecutar_verificacion_semanal()
-                st.success("✅ Verificación completada.")
-                
-                # Mostrar resumen de estados
-                resumen = df_final['Estado'].value_counts()
-                st.subheader("Resumen de Hallazgos")
-                st.write(resumen)
-                
-                st.dataframe(df_final)
-
-                # Notificación automática
-                notifier.enviar_reporte(
-                    "REPORTE SEMANAL: Seguimiento de Vulnerabilidades",
-                    f"Resumen de estados:\n{resumen.to_string()}\n\nSe adjunta la sábana completa.",
-                    adjuntos=[os.getenv('PATH_RAW_CSV'), os.getenv('PATH_RAW_PDF')]
-                )
-            except Exception as e:
-                st.error(f"Error en la verificación: {e}")
-
-with tab3:
-    st.header("Evidencia de Auditoría (Logs)")
-    log_path = os.getenv('PATH_LOGS')
-    if os.path.exists(log_path):
-        with open(log_path, "r") as f:
-            st.text_area("Historial de pasos ejecutados:", f.read(), height=400)
-    else:
-        st.info("Aún no se han generado registros de auditoría.")
+    if st.button("📈 Ejecutar Comparativa Actual"):
+        with st.spinner("Cruzando datos..."):
+            # Aquí llamamos al analyzer usando el snapshot_path específico del scope
+            # (Asumiendo que el escaneo ya terminó en Nessus)
+            df_actual = orchestrator.nessus.download_scan_csv(orchestrator.scan_id)
+            df_priorizado = orchestrator.prioritizer.aplicar_priorizacion(df_actual)
+            
+            # El analyzer usa el snapshot_net.csv o snapshot_serv.csv automáticamente
+            df_final = orchestrator.analyzer.generar_seguimiento(
+                df_priorizado, 
+                regulatorio, 
+                os.getenv('PATH_ASSUMED')
+            )
+            
+            st.success("Cruce completado.")
+            st.dataframe(df_final)
